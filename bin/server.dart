@@ -23,9 +23,11 @@ main() async {
     ..bind(ExamplesController));
 
   //add static files handles
-  setShelfHandler(createStaticHandler('/web'));
+  setShelfHandler(createStaticHandler('web'));
 
   //regular start
   setupConsoleLog();
   await start();
 }
+
+@Get('/') index () => redirect('/examples');

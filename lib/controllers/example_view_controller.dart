@@ -8,7 +8,7 @@ class ExamplesController {
 
   @DefaultGetView(viewSubPath: '/index')
   Future<List<Example>> index() async {
-    var examples =  await exampleServices.allExamples();
+    var examples = await exampleServices.allExamples();
     return examples;
   }
 
@@ -40,4 +40,6 @@ class ExamplesController {
     await exampleServices.updateExample(exampleId, example);
     return redirect('/examples/$exampleId');
   }
+
+  @ErrorHandler(404) notFound() => redirect('/examples');
 }
